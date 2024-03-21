@@ -8,6 +8,7 @@ const Navbar = () => {
         <Link href={"/"} className="w-36">
           <Image src={Logo} alt="Logo Image" width={128} height={38} />
         </Link>
+        <div className="flex w-32 justify-end gap-3"></div>
       </div>
     </header>
   );
