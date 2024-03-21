@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-
+// import type { Metadata } from "next";
 // export const metadata: Metadata = {
 //   title: "Event Manager",
 //   description: "Event Management Platform",
@@ -8,14 +7,12 @@ import type { Metadata } from "next";
 //   },
 // };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+import Hero from "@/components/home/Hero";
+
+export default function RootLayout() {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <>
+      <Hero />
+    </>
   );
 }
