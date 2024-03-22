@@ -1,7 +1,7 @@
 import { Schema, models, model, Document } from "mongoose";
 
 // Define the interface representing the document in MongoDB
-export interface IEvent extends Document {
+export interface IEvent {
   _id: string;
   title: string;
   description?: string;
