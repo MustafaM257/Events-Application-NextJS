@@ -3,9 +3,9 @@
 import { revalidatePath } from "next/cache";
 
 import { connectToDatabase } from "@/lib/mongodb/db";
-// import User from "@/lib/database/models/user.model";/
-// import Order from "@/lib/database/models/order.model";/
-// import Event from "@/lib/mongodb/models/event.model";/
+import User from "../mongodb/db/models/user.model";
+import Order from "../mongodb/db/models/order.model";
+import Event from "../mongodb/db/models/event.model";
 import { handleError } from "@/lib/utils";
 
 import { CreateUserParams, UpdateUserParams } from "@/types";
