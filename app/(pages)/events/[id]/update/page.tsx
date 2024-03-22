@@ -1,6 +1,6 @@
 import EventForm from "@/components/shared/EventForm";
 import { auth } from "@clerk/nextjs";
-const CreateEvent = () => {
+const UpdateEvent = () => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
   return (
@@ -17,4 +17,4 @@ const CreateEvent = () => {
   );
 };
 
-export default CreateEvent;
+export default UpdateEvent;
