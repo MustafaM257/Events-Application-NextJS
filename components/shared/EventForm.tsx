@@ -69,11 +69,8 @@ const EventForm = ({ userId, type }: EventFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <Dropdown
-                    placeholder="Event Title"
-                    {...field}
                     onChangeHandler={field.onChange}
                     value={field.value}
-                    className="input-field"
                   />
                 </FormControl>
                 <FormMessage />
