@@ -17,7 +17,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { ICategory } from "@/lib/mongodb/db/models/category.model";
-import { useState } from "react";
+import { startTransition, useState } from "react";
 import { Input } from "@/components/ui/input";
 type DropdownProps = {
   value?: string;
@@ -26,6 +26,7 @@ type DropdownProps = {
 const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [newCategory, setNewCategory] = useState("");
+  const handleAddCategory = () => {};
   return (
     <Select onValueChange={onChangeHandler}>
       <SelectTrigger className="select-field">
@@ -62,7 +63,11 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>Continue</AlertDialogAction>
+              <AlertDialogAction
+                onClick={() => startTransition(handleAddCategory)}
+              >
+                Continue
+              </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
