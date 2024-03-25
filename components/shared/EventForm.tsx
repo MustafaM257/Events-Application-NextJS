@@ -102,15 +102,10 @@ const EventForm = ({ userId, type }: EventFormProps) => {
           />
           <FormField
             control={form.control}
-            name="description"
+            name="imageUrl"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl className="h-72">
-                  {/* <Textarea
-                    placeholder="Description"
-                    {...field}
-                    className="textarea rounded-2xl"
-                  /> */}
                   <FileUploader
                     onFieldChange={field.onChange}
                     imageUrl={field.value}
