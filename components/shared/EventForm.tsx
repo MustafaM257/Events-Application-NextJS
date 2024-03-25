@@ -3,6 +3,7 @@ import Image from "next/image";
 import locationImage from "@/public/assets/icons/location-grey.svg";
 import calendarImage from "@/public/assets/icons/calendar.svg";
 import dollarImage from "@/public/assets/icons/dollar.svg";
+import linkImage from "@/public/assets/icons/link.svg";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -265,8 +266,39 @@ const EventForm = ({ userId, type }: EventFormProps) => {
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            name="url"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <div className="flex-center h-14 w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                    <Image
+                      src={linkImage}
+                      alt="Link icon"
+                      width={25}
+                      height={25}
+                    />
+                    <Input
+                      placeholder="URL"
+                      {...field}
+                      className="input-field"
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
-        <Button type="submit">Submit</Button>
+        <Button
+          type="submit"
+          size={"lg"}
+          className="button col-span-2 w-full"
+          disabled={form.formState.isSubmitting}
+        >
+          {form.formState.isSubmitting ? "Submitting.." : `${type} Event`}
+        </Button>
       </form>
     </Form>
   );
