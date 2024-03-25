@@ -1,4 +1,7 @@
 "use client";
+import Image from "next/image";
+import locationImage from "@/public/assets/icons/location-grey.svg";
+import calendarImage from "@/public/assets/icons/calendar.svg";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,6 +23,8 @@ import { eventFormSchema } from "@/lib/forms/validator";
 import { eventDefaultValues } from "@/constants";
 import Dropdown from "./Dropdown";
 import { FileUploader } from "./FileUploader";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 // Props
 type EventFormProps = {
   userId: string;
@@ -31,6 +36,7 @@ type EventFormProps = {
 const EventForm = ({ userId, type }: EventFormProps) => {
   const [files, setFiles] = useState<File[]>([]);
   // Form default values: (Note that eventDefaultValues are declared in constants dir and imported here)
+
   const defaultValues = eventDefaultValues;
   // 1. Define your form.
   const form = useForm<z.infer<typeof eventFormSchema>>({
@@ -117,7 +123,61 @@ const EventForm = ({ userId, type }: EventFormProps) => {
             )}
           />
         </div>
-
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="location"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <div className="flex-center h-14 w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                    <Image
+                      src={locationImage}
+                      alt="Location icon"
+                      width={25}
+                      height={25}
+                    />
+                    <Input
+                      placeholder="Event location or Online"
+                      {...field}
+                      className="input-field"
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="startDateTime"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <div className="flex-center h-14 w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                    <Image
+                      src={calendarImage}
+                      alt="Calender icon"
+                      width={25}
+                      height={25}
+                      className="filter-grey"
+                    />
+                    <p className="ml-4 whitespace-nowrap text-grey-600">
+                      Start Date:
+                    </p>
+                    <DatePicker
+                      selected={field.value}
+                      onChange={(date: Date) => field.onChange(date)}
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <Button type="submit">Submit</Button>
       </form>
     </Form>
