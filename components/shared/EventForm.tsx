@@ -30,6 +30,7 @@ import { useUploadThing } from "@/lib/uploadthing";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useRouter } from "next/navigation";
+import { createEvent } from "@/lib/actions/event.actions";
 // Props
 type EventFormProps = {
   userId: string;
@@ -39,6 +40,7 @@ type EventFormProps = {
 // Event Logic
 
 const EventForm = ({ userId, type }: EventFormProps) => {
+  console.log("user id", userId);
   const router = useRouter();
   const [files, setFiles] = useState<File[]>([]);
   // Form default values: (Note that eventDefaultValues are declared in constants dir and imported here)
@@ -60,22 +62,22 @@ const EventForm = ({ userId, type }: EventFormProps) => {
       if (!uploadedImages) return;
       uploadedImageUrl = uploadedImages[0].url;
     }
-    // if (type === "Create") {
-    //   try {
-    //     const newEvent = await createEvent({
-    //       event: { ...values, imageUrl: uploadedImageUrl },
-    //       userId,
-    //       path: "/profile",
-    //     });
+    if (type === "Create") {
+      try {
+        const newEvent = await createEvent({
+          event: { ...values, imageUrl: uploadedImageUrl },
+          userId,
+          path: "/profile",
+        });
 
-    //     if (newEvent) {
-    //       form.reset();
-    //       router.push(`/event/${newEvent._id}`);
-    //     }
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // }
+        if (newEvent) {
+          form.reset();
+          router.push(`/event/${newEvent._id}`);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
   return (
     <Form {...form}>
