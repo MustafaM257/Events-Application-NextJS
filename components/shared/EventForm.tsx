@@ -19,7 +19,7 @@ import { useForm } from "react-hook-form";
 import { eventFormSchema } from "@/lib/forms/validator";
 import { eventDefaultValues } from "@/constants";
 import Dropdown from "./Dropdown";
-import FileUploader from "./FileUploader";
+import { FileUploader } from "./FileUploader";
 // Props
 type EventFormProps = {
   userId: string;
