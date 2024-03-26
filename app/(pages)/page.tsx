@@ -8,8 +8,16 @@
 // };
 import Collection from "@/components/shared/Collection";
 import Hero from "@/components/home/Hero";
+import { getAllEvents } from "@/lib/actions/event.actions";
 
-export default function RootLayout() {
+export default async function Home() {
+  const events = await getAllEvents({
+    query: "",
+    category: "",
+    page: 1,
+    limit: 6,
+  });
+  console.log(events);
   return (
     <>
       <Hero />
@@ -24,7 +32,7 @@ export default function RootLayout() {
           Search Categroies
         </div>
         <Collection
-          data={[]}
+          data={events?.data}
           emptyTitle="No Events Found"
           emptyStateSubtext="Check later"
           collectionType="All_events"

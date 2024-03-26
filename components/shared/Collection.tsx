@@ -19,6 +19,7 @@ const Collection = ({
   limit,
   page,
   totalPages,
+  urlParamName,
 }: CollectionProps) => {
   return <div>Collection</div>;
 };
