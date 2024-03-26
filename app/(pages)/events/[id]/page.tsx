@@ -4,6 +4,7 @@ import { SearchParamProps } from "@/types";
 import calendarImage from "@/public/assets/icons/calendar.svg";
 import locationImage from "@/public/assets/icons/location.svg";
 import Image from "next/image";
+import Link from "next/link";
 const EventDetails = async ({ params: { id } }: SearchParamProps) => {
   const event = await getEventById(id);
   return (
@@ -78,6 +79,17 @@ const EventDetails = async ({ params: { id } }: SearchParamProps) => {
               />
               <p className="p-medium-16 lg:p-regular-20">{event.location}</p>
             </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="p-bold-20 text-grey-600"> What You'll Learn</p>
+            <p className="p-medium-16 lg:p-regular-18 ">{event.description}</p>
+            <Link
+              href={event.url}
+              target="_blank"
+              className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline"
+            >
+              {event.url}
+            </Link>
           </div>
         </div>
       </div>
