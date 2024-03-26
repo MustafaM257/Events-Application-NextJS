@@ -2,6 +2,7 @@ import { getEventById } from "@/lib/actions/event.actions";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import calendarImage from "@/public/assets/icons/calendar.svg";
+import locationImage from "@/public/assets/icons/location.svg";
 import Image from "next/image";
 const EventDetails = async ({ params: { id } }: SearchParamProps) => {
   const event = await getEventById(id);
@@ -44,16 +45,38 @@ const EventDetails = async ({ params: { id } }: SearchParamProps) => {
                 width={32}
                 height={32}
               />
-              <div className="p-medium-16 lg:p-regular-20 flex flex-wrap items-center">
+              <div className="p-medium-16 lg:p-regular-20 flex flex-wrap items-center gap-2">
                 <p>
+                  <span className=" w-20 inline-block p-bold-16 rounded-full bg-primary-500 px-3  py-1 text-center text-primary-50 ">
+                    START
+                  </span>
+                  {"     "}
                   {formatDateTime(event.startDateTime).dateOnly} -{" "}
-                  {formatDateTime(event.startDateTime).timeOnly}
+                  <span className=" font-bold">
+                    {formatDateTime(event.startDateTime).timeOnly}
+                  </span>
                 </p>
                 <p>
+                  <span className=" w-20 inline-block p-bold-16 rounded-full bg-primary-500 px-3  py-1 text-center text-primary-50 ">
+                    END
+                  </span>
+                  {"     "}
                   {formatDateTime(event.endDateTime).dateOnly} -{" "}
-                  {formatDateTime(event.endDateTime).timeOnly}
+                  <span className=" font-bold">
+                    {" "}
+                    {formatDateTime(event.endDateTime).timeOnly}
+                  </span>
                 </p>
               </div>
+            </div>
+            <div className="p-regular-20 flex items-center gap-3">
+              <Image
+                src={locationImage}
+                alt="Location"
+                width={32}
+                height={32}
+              />
+              <p className="p-medium-16 lg:p-regular-20">{event.location}</p>
             </div>
           </div>
         </div>
