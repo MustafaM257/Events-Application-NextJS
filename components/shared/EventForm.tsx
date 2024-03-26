@@ -42,6 +42,7 @@ type EventFormProps = {
 const EventForm = ({ userId, type }: EventFormProps) => {
   const router = useRouter();
   const [files, setFiles] = useState<File[]>([]);
+  console.log("user id", userId);
   // Form default values: (Note that eventDefaultValues are declared in constants dir and imported here)
 
   const defaultValues = eventDefaultValues;
@@ -71,7 +72,7 @@ const EventForm = ({ userId, type }: EventFormProps) => {
 
         if (newEvent) {
           form.reset();
-          router.push(`/event/${newEvent._id}`);
+          router.push(`/events/${newEvent._id}`);
         }
       } catch (error) {
         console.log(error);
