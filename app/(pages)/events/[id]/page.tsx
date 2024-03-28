@@ -6,7 +6,10 @@ import locationImage from "@/public/assets/icons/location.svg";
 import Image from "next/image";
 import Link from "next/link";
 import RelatedEvents from "@/components/shared/RelatedEvents";
-const EventDetails = async ({ params: { id } }: SearchParamProps) => {
+const EventDetails = async ({
+  params: { id },
+  searchParams,
+}: SearchParamProps) => {
   const event = await getEventById(id);
   return (
     <>
@@ -98,7 +101,11 @@ const EventDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
         </div>
       </section>
-      <RelatedEvents />
+      <RelatedEvents
+        categoryId={event.category._id}
+        eventId={event._id}
+        page={searchParams.page as string}
+      />
     </>
   );
 };
