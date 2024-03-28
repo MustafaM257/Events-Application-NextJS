@@ -6,6 +6,7 @@ import locationImage from "@/public/assets/icons/location.svg";
 import Image from "next/image";
 import Link from "next/link";
 import RelatedEvents from "@/components/shared/RelatedEvents";
+import CheckoutButton from "@/components/shared/CheckoutButton";
 const EventDetails = async ({
   params: { id },
   searchParams,
@@ -43,6 +44,7 @@ const EventDetails = async ({
               </div>
             </div>
             {/* Checkout here */}
+            <CheckoutButton event={event} />
             <div className="flex flex-col gap-5">
               <div className="flex gap-2 md:gap-3">
                 <Image
