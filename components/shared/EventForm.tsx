@@ -45,7 +45,7 @@ type EventFormProps = {
 const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
   const router = useRouter();
   const [files, setFiles] = useState<File[]>([]);
-  console.log("user id", userId);
+  // console.log("user id", userId);
   // Form default values: (Note that eventDefaultValues are declared in constants dir and imported here)
 
   const defaultValues =

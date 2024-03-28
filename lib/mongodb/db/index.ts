@@ -13,6 +13,6 @@ export const connectToDatabase = async () => {
     cached.promise ||
     mongoose.connect(MONGODB_URI, {
       dbName: "events",
-      bufferCommands: false,
+      bufferCommands: true,
     });
 };
