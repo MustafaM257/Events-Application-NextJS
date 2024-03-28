@@ -8,7 +8,7 @@ const page = () => {
   return (
     <>
       {/* Tickets */}
-      <MyTickets userId={userId} />
+      {/* <MyTickets userId={userId} /> */}
 
       {/* Events Organized */}
       <EventsOrganized userId={userId} />
