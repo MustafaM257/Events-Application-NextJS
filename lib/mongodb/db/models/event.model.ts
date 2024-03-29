@@ -11,7 +11,7 @@ export interface IEvent {
   startDateTime: Date;
   endDateTime: Date;
   price: string;
-  isFree?: boolean;
+  isFree: boolean;
   url?: string;
   category?: {
     _id: string;

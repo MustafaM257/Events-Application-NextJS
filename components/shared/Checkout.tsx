@@ -2,6 +2,7 @@ import { IEvent } from "@/lib/mongodb/db/models/event.model";
 import { Button } from "../ui/button";
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect } from "react";
+import { checkoutOrder } from "@/lib/actions/order.actions";
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe(
