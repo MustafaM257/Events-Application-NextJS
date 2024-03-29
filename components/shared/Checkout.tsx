@@ -5,11 +5,19 @@ import { useEffect } from "react";
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 const Checkout = ({ event, userId }: { event: IEvent; userId: string }) => {
   const onCheckout = async () => {
-    console.log("Checkout");
+    const order = {
+      eventTitle: event.title,
+      eventId: event._id,
+      price: event.price,
+      isFree: event.isFree,
+      buyerId: userId,
+    };
+    // server action
+    await checkoutOrder(order);
   };
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
