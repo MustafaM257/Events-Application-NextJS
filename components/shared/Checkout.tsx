@@ -1,25 +1,14 @@
+import React, { useEffect } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+
+// import { IEvent } from "@/lib/database/models/event.model";
 import { IEvent } from "@/lib/mongodb/db/models/event.model";
 import { Button } from "../ui/button";
-import { loadStripe } from "@stripe/stripe-js";
-import { useEffect } from "react";
 import { checkoutOrder } from "@/lib/actions/order.actions";
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
+
+loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+
 const Checkout = ({ event, userId }: { event: IEvent; userId: string }) => {
-  const onCheckout = async () => {
-    const order = {
-      eventTitle: event.title,
-      eventId: event._id,
-      price: event.price,
-      isFree: event.isFree,
-      buyerId: userId,
-    };
-    // server action
-    await checkoutOrder(order);
-  };
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
@@ -33,11 +22,23 @@ const Checkout = ({ event, userId }: { event: IEvent; userId: string }) => {
       );
     }
   }, []);
+
+  const onCheckout = async () => {
+    const order = {
+      eventTitle: event.title,
+      eventId: event._id,
+      price: event.price,
+      isFree: event.isFree,
+      buyerId: userId,
+    };
+
+    await checkoutOrder(order);
+  };
+
   return (
-    <form action={onCheckout} method="POST">
-      {/* Stripe functionality here */}
-      <Button type="submit" role="link" size={"lg"} className="button sm:w-fit">
-        {event.isFree ? "Get Free Ticket" : "Buy Ticket"}
+    <form action={onCheckout} method="post">
+      <Button type="submit" role="link" size="lg" className="button sm:w-fit">
+        {event.isFree ? "Get Ticket" : "Buy Ticket"}
       </Button>
     </form>
   );

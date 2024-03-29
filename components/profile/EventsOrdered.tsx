@@ -8,6 +8,7 @@ const EventsOrdered = async ({ userId }: { userId: string }) => {
     userId,
     page: 1,
   });
+  console.log("orders", orders?.data);
   const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
   console.log("orderedevents", orderedEvents);
   return (
