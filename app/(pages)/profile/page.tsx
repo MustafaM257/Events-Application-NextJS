@@ -1,5 +1,5 @@
 import EventsOrganized from "@/components/profile/EventsOrganized";
-import MyTickets from "@/components/profile/MyTickets";
+import EventsOrdered from "@/components/profile/EventsOrdered";
 import { auth } from "@clerk/nextjs";
 
 const page = () => {
@@ -7,8 +7,8 @@ const page = () => {
   const userId = sessionClaims?.userId as string;
   return (
     <>
-      {/* Tickets */}
-      {/* <MyTickets userId={userId} /> */}
+      {/* Events Ordered */}
+      <EventsOrdered userId={userId} />
 
       {/* Events Organized */}
       <EventsOrganized userId={userId} />
