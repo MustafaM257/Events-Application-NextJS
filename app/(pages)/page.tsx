@@ -1,6 +1,7 @@
 import Collection from "@/components/shared/Collection";
 import Hero from "@/components/home/Hero";
 import { getAllEvents } from "@/lib/actions/event.actions";
+import Search from "@/components/shared/Search";
 
 export default async function Home() {
   const events = await getAllEvents({
@@ -20,6 +21,7 @@ export default async function Home() {
           Trusted by <br /> Hundreds of Events
         </h2>
         <div className="flex w-full flex-col gap-5 md:flex-row">
+          <Search />
           Search Categroies
         </div>
         <Collection
