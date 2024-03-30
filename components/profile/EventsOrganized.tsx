@@ -2,10 +2,16 @@ import { getEventsByUser } from "@/lib/actions/event.actions";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Collection from "../shared/Collection";
-const EventsOrganized = async ({ userId }: { userId: string }) => {
+const EventsOrganized = async ({
+  userId,
+  page,
+}: {
+  userId: string;
+  page: number;
+}) => {
   const organizedEvents = await getEventsByUser({
     userId,
-    page: 1,
+    page: page,
   });
   return (
     <>
@@ -24,9 +30,9 @@ const EventsOrganized = async ({ userId }: { userId: string }) => {
           emptyStateSubtext="Let's get started! Create an event now."
           collectionType="Events_Organized"
           limit={6}
-          page={1}
+          page={page}
           urlParamName="eventsPage"
-          totalPages={2}
+          totalPages={organizedEvents?.totalPages}
         />
       </section>
     </>

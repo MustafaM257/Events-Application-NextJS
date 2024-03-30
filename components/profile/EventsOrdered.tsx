@@ -3,10 +3,16 @@ import Link from "next/link";
 import Collection from "../shared/Collection";
 import { getOrdersByUser } from "@/lib/actions/order.actions";
 import { IOrder } from "@/lib/mongodb/db/models/order.model";
-const EventsOrdered = async ({ userId }: { userId: string }) => {
+const EventsOrdered = async ({
+  userId,
+  page,
+}: {
+  userId: string;
+  page: number;
+}) => {
   const orders = await getOrdersByUser({
     userId,
-    page: 1,
+    page: page,
   });
   console.log("orders", orders?.data);
   const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
@@ -28,9 +34,9 @@ const EventsOrdered = async ({ userId }: { userId: string }) => {
           emptyStateSubtext="That's okay! Check out some events below."
           collectionType="My_Tickets"
           limit={3}
-          page={1}
+          page={page}
           urlParamName="ordersPage"
-          totalPages={2}
+          totalPages={orders?.totalPages}
         />
       </section>
     </>
