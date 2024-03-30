@@ -75,7 +75,7 @@ To ensure that the project runs smoothly without any issues, please follow these
 
 3. **Run the Project:** Once all dependencies are installed, you can start the development server by running:
    ```bash
-   pnpm dev
+   pnpm run dev
    ```
    This will start the Next.js development server and make your application available at the specified port (usually http://localhost:3000).
 
