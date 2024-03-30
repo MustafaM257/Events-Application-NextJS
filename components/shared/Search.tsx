@@ -9,9 +9,6 @@ import { useRouter } from "next/navigation";
 import { url } from "inspector";
 const Search = ({ placeholder = "Search..." }: { placeholder?: string }) => {
   const searchParams = useSearchParams();
-  setInterval(() => {
-    console.log("this is the searchParams: ", searchParams.toString());
-  }, 1000);
   const router = useRouter();
   const [query, setQuery] = useState("");
   useEffect(() => {
