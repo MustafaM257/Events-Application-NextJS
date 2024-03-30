@@ -1,45 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Events Application (Next.js)
 
-## Getting Started
+## Technologies Used
 
-First, run the development server:
+This project utilizes the following technologies:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js
+- Next.js
+- TypeScript
+- TailwindCSS
+- Stripe
+- Shadcn
+- uploadthing
+- React Hook Form
+- Zod
+
+## Features
+
+The Events Application is a platform designed for browsing, purchasing, and managing events of interest. Key features include:
+
+- **Event Exploration:** Users can browse and view a variety of events based on their interests.
+- **Event Creation:** Users have the ability to create and publish their own events on the platform.
+- **Event Purchase:** Users can purchase tickets or register for events directly through the platform.
+- **Order Management:** Users can view their past orders and manage their event registrations.
+- **User Authentication:** Secure authentication powered by Clerk, allowing users to sign in and sign up securely.
+- **Data Storage:** MongoDB is used to store event data and user information securely.
+- **File Uploads:** Utilizes uploadthing for handling file uploads related to events.
+
+## Environment Variables
+
+Ensure you have a `.env.local` file in the root directory of your project with the following environment variables:
+
+```plaintext
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=<your_next_public_clerk_publishable_key>
+CLERK_SECRET_KEY=<your_clerk_key>
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+
+MONGODB_URI=<your_mongodb_uri>
+
+WEBHOOK_SECRET=<your_webhook_secret>
+
+UPLOADTHING_SECRET=<your_uploadthing_secret>
+UPLOADTHING_APP_ID=<your_uploadthing_app_id>
+
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=<your_stripe_publishable_key>
+STRIPE_SECRET_KEY=<your_stripe_secret_key>
+STRIPE_WEBHOOK_SECRET=<your_stripe_webhook_secret>
+
+NEXT_PUBLIC_SERVER_URL=<your_next_public_server_url>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Replace `<placeholders>` with your actual values.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### This project uses pnpm
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project is managed with pnpm, a fast, disk-space efficient package manager for JavaScript projects.
 
-## Learn More
+To ensure that the project runs smoothly without any issues, please follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Install pnpm:** If you haven't already installed pnpm globally on your system, you can do so by running the following command:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   npm install -g pnpm
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. **Install Dependencies:** Navigate to the root directory of the project in your terminal and run the following command to install project dependencies using pnpm:
 
-## Deploy on Vercel
+   ```bash
+   pnpm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Run the Project:** Once all dependencies are installed, you can start the development server by running:
+   ```bash
+   pnpm dev
+   ```
+   This will start the Next.js development server and make your application available at the specified port (usually http://localhost:3000).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-Notes about structuring:
-
-- Inside home, I'm building components based on each page if necessary, and if it's repeated it's shared
-- dir: constants is for data to load, eg: navbar links
-- lib is where most of work of backend is going:
-  > actions: methods along the db for each model
-  > mongodb/index to establish a cashed conxn, more like a serverless approach
-  > mongodb/db/models where db models are
+By following these steps, you can ensure that the project runs smoothly without any bugs or issues related to dependency management.
